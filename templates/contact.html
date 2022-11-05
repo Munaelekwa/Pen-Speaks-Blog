@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% block nav %}
+{% if current_user.is_authenticated %}      
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact" class="current">Contact</a></li>
+        <li><a href="/my posts">Posts</a></li>
+        <li><a href="/login">Log Out</a></li>
+    </ul>	
+{% else %}
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact" class="current">Contact</a></li>
+        <li><a href="/login">Log In</a></li>
+    </ul>	
+{% endif %}
+{% endblock nav %} 	
+    
+    
+{% block content %}
+<h1>Contact Us</h1>
+
+<p><em>Pen Speaks is open to suggestions, contributions and collaborations to make for better user experience and satisfaction. Feel free to reach out, by filling the form below, or send an email at</em></p>
+<a href="munaelekwa@gmail.com">Email</a></p>
+
+<div id="contact_form">
+
+    <h2>Contact Form</h2>
+    
+    <form method="post" name="contact" action="#">
+    
+            {{ form.hidden_tag() }}
+            <div class="login-form">
+                {{ form.name.label }}
+                {{ form.name }}
+            </div>
+
+            <div class="login-form">
+                {{ form.email.label }}
+                {{ form.email }}
+            </div>
+
+
+            <div class="login-form">
+                {{ form.message.label }}
+                {{ form.message(class = 'msg_field') }}
+            </div>
+
+            <div>
+                {{ form.submit(class="login-btn") }}
+            </div>
+    </form>
+
+</div>
+{% endblock content %} 

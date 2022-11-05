@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block nav %}
+{% if current_user.is_authenticated %}      
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about" class="current">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/my posts">Posts</a></li>
+        <li><a href="/login">Log Out</a></li>
+    </ul>	
+{% else %}
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about" class="current">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/login">Log In</a></li>
+    </ul>	
+{% endif %}
+{% endblock nav %} 
+    
+    
+{% block content %}
+<h2>About Us</h2>
+<p>Welcome to Pen Speaks!</p>
+<p align="justify">Pen Speaks is an outlet for writers and a dream come true for readers. We would give several pennies for your thoughts and we know alot of people who could give more.</p>
+<p align="justify">It is a blog app hosted by Munachiso Elekwa</p>
+<p align="justify">We want to hear your pen speak, <a href="{{ url_for('register') }}">Sign Up</a> or <a href="{{ url_for('login') }}">Sign In</a></p>
+{% endblock content %} 

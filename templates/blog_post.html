@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block nav %}
+{% if current_user.is_authenticated %}      
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/my posts">Posts</a></li>
+        <li><a href="/login">Log Out</a></li>
+    </ul>	
+{% else %}
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/login">Log In</a></li>
+    </ul>	
+{% endif %}
+{% endblock nav %} 
+
+{% block content %}
+<div class="post_section">
+    {% if post.user_id == current_user.id %}
+
+        <h2>{{ post.title }}</h2>
+        
+
+        <p>{{ post.date_posted.strftime("%H:%M  %m/%d/%Y") }} | <strong>{{post.author.firstname}} {{ post.author.lastname}}</strong>| <strong>Category:</strong> <a href="{{ url_for('cat', post_cat=post.category) }}">{{ post.category }}</a></p>
+        
+        <p>{{ post.content }}</p>
+        
+        <div class="update">
+            <button><a href="{{ url_for('edit_post', post_id=post.id) }}">Edit</a></button>
+            <button><a href="{{ url_for('del_post', post_id=post.id) }}">Delete</a></button>
+        </div>
+
+    {% else %}
+    <h2>{{ post.title }}</h2>
+        
+
+    <p>{{ post.date_posted.strftime("%H:%M  %m/%d/%Y") }} | <strong>{{post.author.firstname}}, {{ post.author.lastname}}</strong>| <strong>Category:</strong> <a href="{{ url_for('cat', post_cat=post.category) }}">{{ post.category }}</a></p>
+    
+    <p>{{ post.content }}</p>
+    {% endif %}
+
+</div>
+{% endblock content %}
+        

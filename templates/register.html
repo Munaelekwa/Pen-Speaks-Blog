@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block nav %}       
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About Us</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/login">Log In</a></li>
+</ul>
+{% endblock nav %}    	
+    
+    
+{% block content%}
+<h1>Register</h1>
+<div>
+    
+    <form method="POST" action="#">
+        {{ form.hidden_tag() }}
+        <div class="login-form">
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+        </div>
+
+        <div class="login-form">
+            {{ form.last_name.label }}
+            {{ form.last_name }}
+        </div>
+
+
+        <div class="login-form">
+            {{ form.email.label }}
+            {{ form.email }}
+        </div>
+
+        <div class="login-form">
+            {{ form.password.label }}
+            {{ form.password }}
+        </div>
+
+        <div class="login-form">
+            {{ form.confirm_password.label }}
+            {{ form.confirm_password }}
+        </div>
+
+        <div>
+            {{ form.submit(class="login-btn") }}
+        </div>
+    
+    </form>
+    <div class="login-text">
+        <small class="login-text2">
+            Already Have An Account?<a class="Mg-left" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+</div>
+{% endblock content %} 

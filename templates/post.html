@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block nav %}
+{% if current_user.is_authenticated %}      
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/my posts">Posts</a></li>
+        <li><a href="/login">Log Out</a></li>
+    </ul>	
+{% else %}
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/login">Log In</a></li>
+    </ul>	
+{% endif %}
+{% endblock nav %} 	
+
+{% block content %}
+<h1>Your Post</h1>
+<div id="contact_form">
+    
+    <form method="POST" action="#">
+        {{ form.hidden_tag() }}
+        <div class="loginFm">
+            <div class="login-form">
+                {{ form.title.label }}
+                {{ form.title }}
+            </div>
+
+            <div class="login-form">
+                {{ form.category.label }}
+                {{ form.category }}
+            </div>
+
+            <div class="login-form">
+                {{ form.content.label }}
+                {{ form.content(class = 'msg_field') }}
+            </div>
+
+            <div>
+                {{ form.submit(class="login-btn") }}
+            </div>
+        </div>  
+    </form>
+</div>
+{% endblock content %} 

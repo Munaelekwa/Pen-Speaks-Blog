@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Pen Speaks</title>
+<meta name="keywords" content="Pen Speaks blog"/>
+<meta name="description" content="Pen Speaks blog"/>
+<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div id="templatemo_wrapper">
+
+	<div id="templatemo_menu">
+        {% block nav %}      
+            
+        {% endblock nav %} 
+    </div> <!-- end of templatemo_menu -->
+
+    <div id="templatemo_left_column">
+    
+        <div id="templatemo_header">
+        
+            <div id="site_title">
+                <h1><a href="#">Pen <strong>Speaks</strong><span>A Home For Creatives</span></a></h1>
+            </div><!-- end of site_title -->
+        </div> <!-- end of header -->  
+        
+        <div id="templatemo_sidebar">
+            
+            <h4>Categories</h4>
+            <ul class="templatemo_list">
+                <li><a href="#">Short Stories</a></li>
+                <li><a href="#" target="_parent">Health</a></li>
+                <li><a href="#" target="_parent">Technology</a></li>
+                <li><a href="#" target="_parent">Relationships</li>
+            </ul>
+            
+            
+        </div> <!-- end of templatemo_sidebar --> 
+    
+    </div> <!-- end of templatemo_left_column -->
+    
+    <div id="templatemo_right_column">
+        {% with messages = get_flashed_messages(with_categories=True) %} 
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'success' %}
+                        <div class="success">
+                            <p>{{ message }} <a class="Mg-left" href="{{request.path}}">Dismiss</a></p>
+                        </div>
+                    {% else %}
+                        <div class="error">
+                            <p>{{ message }} <a class="Mg-left" href="{{request.path}}">Dismiss</a></p>
+                        </div>    
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <div id="templatemo_main">
+            {% block content %} 
+            {% endblock content %}
+        </div> <!-- end of main -->
+    </div> <!-- end of right column -->
+
+    <div id="templatemo_footer">
+    Copyright © 2022 Pen Speaks | A blog App by Muna Elekwa
+    
+</div>
+</div> <!-- end of wrapper -->
+
+</body>
+</html>

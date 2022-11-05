@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block nav %}
+{% if current_user.is_authenticated %}      
+    <ul>
+        <li><a href="/" class="current">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/my posts">Posts</a></li>
+        <li><a href="/logout">Log Out</a></li>
+    </ul>	
+{% else %}
+    <ul>
+        <li><a href="/" class="current">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/login">Log In</a></li>
+    </ul>	
+{% endif %} 
+{% endblock nav %}
+    
+        {% block content %}
+        {% if current_user.is_authenticated %} 
+            <div class="welcome">
+                <h2>Welcome, {{ current_user.firstname }}! make a <button class="post_btn"><a href="{{ url_for('create_post') }}">Post</a></button></h2>
+            </div>
+        {% endif %}
+    {% for post in posts %}
+        <div class="post_section">
+            {% if post.user_id == current_user.id %}
+        
+                <h2><a href="{{ url_for('post', post_id=post.id) }}" class="post_title">{{ post.title }}</a></h2>
+                
+    
+                <p>{{ post.date_posted.strftime("%H:%M  %m/%d/%Y") }} | <strong>{{ post.author.firstname }} {{ post.author.lastname }}</strong>| <strong>Category:</strong> <a href="{{ url_for('cat', post_cat=post.category) }}">{{ post.category }}</a></p>
+                
+                <p>{{ post.content }}</p><a href="{{ url_for('post', post_id=post.id) }}">Continue reading...</a>
+                <div class="update">
+                    <button><a href="{{ url_for('edit_post', post_id=post.id) }}" class="post_btn">Edit</a></button>
+                    <button><a href="{{ url_for('del_post', post_id=post.id) }}" class="post_btn">Delete</a></button>
+                </div>
+
+            {% else %}
+                <h2><a href="{{ url_for('post', post_id=post.id) }}" class="post_title">{{ post.title }}</a></h2>
+                    
+        
+                <p>{{ post.date_posted.strftime("%H:%M  %m/%d/%Y") }} | <strong>{{post.author.firstname}} {{ post.author.lastname}}</strong>| <strong>Category:</strong> <a href="{{ url_for('cat', post_cat=post.category) }}">{{ post.category }}</a></p>
+                
+                <p>{{ post.content }}</p>
+                <a href="{{ url_for('post', post_id=post.id) }}">Continue reading...</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+    {% endblock content %}       
+        
+        
+        

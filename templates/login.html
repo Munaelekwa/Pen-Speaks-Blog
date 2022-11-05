@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block nav %}       
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About Us</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/login" class="current">Log In</a></li>
+</ul>
+{% endblock nav %}
+	
+{% block content %}
+<h1>Log In</h1>
+<div>
+    
+    <form method="post" action="#">
+        {{ form.hidden_tag() }}
+        
+            <div class="login-form">
+                {{ form.email.label }}
+                {{ form.email }}
+            </div>
+
+            <div class="login-form">
+                {{ form.password.label }}
+                {{ form.password }}
+            </div>
+
+            <div>
+                {{ form.remember.label }}
+                {{ form.remember }} 
+            </div>
+
+            <div>
+                {{ form.submit(class="login-btn") }}
+            </div>
+  
+    </form>
+    <div class="login-text">
+        <small class="login-text2">
+            Don't Have An Account?<a class="Mg-left" href="{{ url_for('register') }}" class="login-link">Register</a>
+        </small>
+    </div> 
+</div>
+{% endblock content %}
