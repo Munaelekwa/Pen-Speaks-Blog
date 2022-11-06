@@ -31,7 +31,7 @@
                 <h2><a href="{{ url_for('post', post_id=post.id) }}" class="post_title">{{ post.title }}</a></h2>
                 
     
-                <p>{{ post.date_posted.strftime("%H:%M  %m/%d/%Y") }} | <strong>{{ post.author.firstname }} {{ post.author.lastname }}</strong>| <strong>Category:</strong> <a href="{{ url_for('cat', post_cat=post.category) }}">{{ post.category }}</a></p>
+                <p>{{ post.date_posted.strftime("%H:%M  %m/%d/%Y") }} | <strong>{{ post.author.firstname }} {{ post.author.lastname }}</strong>| <strong>Category:</strong> <a href="{{ url_for('cat', cate=post.category) }}">{{ post.category }}</a></p>
                 
                 <p>{{ post.content }}</p><a href="{{ url_for('post', post_id=post.id) }}">Continue reading...</a>
                 <div class="update">
@@ -43,7 +43,7 @@
                 <h2><a href="{{ url_for('post', post_id=post.id) }}" class="post_title">{{ post.title }}</a></h2>
                     
         
-                <p>{{ post.date_posted.strftime("%H:%M  %m/%d/%Y") }} | <strong>{{post.author.firstname}} {{ post.author.lastname}}</strong>| <strong>Category:</strong> <a href="{{ url_for('cat', post_cat=post.category) }}">{{ post.category }}</a></p>
+                <p>{{ post.date_posted.strftime("%H:%M  %m/%d/%Y") }} | <strong>{{post.author.firstname}} {{ post.author.lastname}}</strong>| <strong>Category:</strong> <a href="{{ url_for('cat', cate=post.category) }}">{{ post.category }}</a></p>
                 
                 <p>{{ post.content }}</p>
                 <a href="{{ url_for('post', post_id=post.id) }}">Continue reading...</a>

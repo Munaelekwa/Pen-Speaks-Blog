@@ -129,9 +129,9 @@ def health():
     return render_template('index.html', posts=posts)
 
 # route to return a dynamic category on the post display
-@app.route('/category')
-def cat(post_cat):
-    posts = Blogpost.query.filter_by(post_cat).all()
+@app.route('/category/<cate>')
+def cat(cate):
+    posts = Blogpost.query.filter_by(category=cate).all()
     return render_template('index.html', posts=posts)
 
 # enables  users edit a post created by them
